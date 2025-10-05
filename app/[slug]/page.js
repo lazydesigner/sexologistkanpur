@@ -100,26 +100,26 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `${post.metaTitle} - Dr. R M Singh Blog`,
-    description: post.metaDescription,
+    title: `${post.data.metaTitle} - Dr. R M Singh Blog`,
+    description: post.data.metaDescription,
     keywords: post.data.keywords.join(', ') + ', sexual health blog, Dr R M Singh',
     alternates: {
       canonical: post.canonical
     },
     openGraph: {
-      title: post.metaTitle,
-      description: post.metaDescription,
-      url: '/' + post.slug,
-      images: [post.featuredImage?.url],
+      title: post.data.metaTitle,
+      description: post.data.metaDescription,
+      url: '/' + post.data.slug,
+      images: [post.data.featuredImage?.url],
       type: 'article',
-      publishedTime: post.publishedAt,
+      publishedTime: post.data.publishedAt,
       authors: 'Dr. R M Singh'
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.metaTitle,
-      description: post.metaDescription,
-      images: [post.featuredImage?.url]
+      title: post.data.metaTitle,
+      description: post.data.metaDescription,
+      images: [post.data.featuredImage?.url]
     }
   }
 }

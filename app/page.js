@@ -74,8 +74,8 @@ const BlogPage = async () => {
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
               <div className="relative h-64 lg:h-80">
                 <Image
-                  src={featuredPost[0].featuredImage?.url || '/default.jpg'}
-                  alt={featuredPost[0].title}
+                  src={featuredPost[0]?.featuredImage?.url || '/default.jpg'}
+                  alt={featuredPost[0]?.title}
                   fill
                   className="object-cover"
                 />
@@ -87,18 +87,18 @@ const BlogPage = async () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <div className="flex items-center space-x-4 mb-3 text-sm">
-                    <span className="bg-primary-500 px-2 py-1 rounded text-xs">{featuredPost[0].categories?.[0]}</span>
+                    <span className="bg-primary-500 px-2 py-1 rounded text-xs">{featuredPost[0]?.categories?.[0]}</span>
                     <span className="flex items-center space-x-1">
                       <Calendar size={14} />
-                      <span>{new Date(featuredPost[0].createdAt).toLocaleDateString()}</span>
+                      <span>{new Date(featuredPost[0]?.createdAt).toLocaleDateString()}</span>
                     </span>
                     <span className="flex items-center space-x-1">
                       <Clock size={14} />
-                      <span>{calculateReadTime(featuredPost[0].content)}</span>
+                      <span>{calculateReadTime(featuredPost[0]?.content)}</span>
                     </span>
                   </div>
-                  <h2 className="text-2xl font-bold mb-2 font-serif">{featuredPost[0].title}</h2>
-                  <p className="text-gray-200">{featuredPost[0].metaDescription}</p>
+                  <h2 className="text-2xl font-bold mb-2 font-serif">{featuredPost[0]?.title}</h2>
+                  <p className="text-gray-200">{featuredPost[0]?.metaDescription}</p>
                 </div>
               </div>
               <div className="p-6">
@@ -108,7 +108,7 @@ const BlogPage = async () => {
                     <span className="text-gray-600 text-sm">Dr. R M Singh</span>
                   </div>
                   <Link 
-                    href={`/${featuredPost[0].slug}`}
+                    href={`/${featuredPost[0]?.slug}`}
                     className="btn-primary flex items-center space-x-2"
                   >
                     <span>Read More</span>
@@ -121,17 +121,17 @@ const BlogPage = async () => {
             {/* Blog Posts Grid */}
             <div className="grid md:grid-cols-2 gap-8">
               {blogPosts.map((post) => (
-                <article key={post.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <article key={post?.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                   <div className="relative h-48">
                     <Image
-                      src={post.featuredImage?.url || '/default.jpg'}
-                      alt={post.title}
+                      src={post?.featuredImage?.url || '/default.jpg'}
+                      alt={post?.title}
                       fill
                       className="object-cover"
                     />
                     <div className="absolute top-3 left-3">
                       <span className="bg-primary-500 text-white px-2 py-1 rounded text-xs font-medium">
-                        {post.categories?.[0]}
+                        {post?.categories?.[0]}
                       </span>
                     </div>
                   </div>
@@ -140,20 +140,20 @@ const BlogPage = async () => {
                     <div className="flex items-center space-x-4 mb-3 text-sm text-gray-500">
                       <span className="flex items-center space-x-1">
                         <Calendar size={14} />
-                        <span>{new Date(post.createdAt).toLocaleDateString()}</span>
+                        <span>{new Date(post?.createdAt).toLocaleDateString()}</span>
                       </span>
                       <span className="flex items-center space-x-1">
                         <Clock size={14} />
-                        <span>{calculateReadTime(post.content)}</span>
+                        <span>{calculateReadTime(post?.content)}</span>
                       </span>
                     </div>
                     
                     <h3 className="text-lg font-bold text-gray-900 mb-3 font-serif leading-tight">
-                      {post.title}
+                      {post?.title}
                     </h3>
                     
                     <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                      {post.metaDescription}
+                      {post?.metaDescription}
                     </p>
 
                     <div className="flex items-center justify-between">
@@ -162,7 +162,7 @@ const BlogPage = async () => {
                         <span className="text-gray-500 text-sm">Dr. R M Singh</span>
                       </div>
                       <Link 
-                        href={`/${post.slug}`}
+                        href={`/${post?.slug}`}
                         className="text-primary-500 hover:text-primary-700 font-medium text-sm flex items-center space-x-1"
                       >
                         <span>Read More</span>
@@ -244,24 +244,24 @@ const BlogPage = async () => {
                 <h3 className="text-lg font-bold text-gray-900 mb-4">Recent Posts</h3>
                 <div className="space-y-4">
                   {blogPosts.slice(0, 3).map((post) => (
-                    <div key={post.id} className="flex space-x-3">
+                    <div key={post?.id} className="flex space-x-3">
                       <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                         <Image
-                          src={post.featuredImage?.url || '/default.jpg'}
-                          alt={post.title}
+                          src={post?.featuredImage?.url || '/default.jpg'}
+                          alt={post?.title}
                           fill
                           className="object-cover"
                         />
                       </div>
                       <div className="flex-1 min-w-0">
                         <Link 
-                          href={`/${post.slug}`}
+                          href={`/${post?.slug}`}
                           className="text-sm font-medium text-gray-900 hover:text-primary-600 line-clamp-2 leading-tight"
                         >
-                          {post.title}
+                          {post?.title}
                         </Link>
                         <p className="text-xs text-gray-500 mt-1">
-                          {new Date(post.publishedAt).toLocaleDateString()}
+                          {new Date(post?.publishedAt).toLocaleDateString()}
                         </p>
                       </div>
                     </div>
