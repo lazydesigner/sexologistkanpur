@@ -8,8 +8,7 @@ export const metadata = {
   keywords: 'Best Sexologist Doctor in Kanpur, Best Sexologist in Kanpur, Top Sexologist in Kanpur, Sexual Health Clinic, Erectile Dysfunction Treatment, Premature Ejaculation Treatment',
   authors: [{ name: 'Dr. R M Singh' }],
   creator: 'Dr. R M Singh Clinic',
-  publisher: 'Dr. R M Singh Clinic',
-  viewport: 'width=device-width, initial-scale=1',
+  publisher: 'Dr. R M Singh Clinic', 
   robots: 'index, follow',
   openGraph: {
     title: 'Dr. R M Singh - Best Sexologist in Kanpur',
@@ -25,6 +24,11 @@ export const metadata = {
     description: 'Expert sexual health specialist with 24+ years experience.',
     creator: '@drrmsingh',
   },
+}
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1.0,
 }
 
 export default function RootLayout({ children }) {

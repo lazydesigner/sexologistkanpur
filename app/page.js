@@ -15,7 +15,7 @@ export const metadata = {
 
 async function getPosts() {
   await dbConnect()
-  const posts = await Post.findOne({ status: "published" })
+  const posts = await Post.find({ status: "published" })
     .sort({ createdAt: -1 })
     .limit(1)
     .lean()
@@ -39,7 +39,7 @@ const calculateReadTime = (content) => {
 
 const BlogPage = async () => {
 
-  const featuredPost = await getPosts()
+  const featuredPost = await getPosts() 
   const blogPosts = await getAllPosts()
 
 
@@ -74,8 +74,8 @@ const BlogPage = async () => {
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
               <div className="relative h-64 lg:h-80">
                 <Image
-                  src={featuredPost.featuredImage?.url || '/default.jpg'}
-                  alt={featuredPost.title}
+                  src={featuredPost[0].featuredImage?.url || '/default.jpg'}
+                  alt={featuredPost[0].title}
                   fill
                   className="object-cover"
                 />
@@ -87,18 +87,18 @@ const BlogPage = async () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <div className="flex items-center space-x-4 mb-3 text-sm">
-                    <span className="bg-primary-500 px-2 py-1 rounded text-xs">{featuredPost.categories?.[0]}</span>
+                    <span className="bg-primary-500 px-2 py-1 rounded text-xs">{featuredPost[0].categories?.[0]}</span>
                     <span className="flex items-center space-x-1">
                       <Calendar size={14} />
-                      <span>{new Date(featuredPost.createdAt).toLocaleDateString()}</span>
+                      <span>{new Date(featuredPost[0].createdAt).toLocaleDateString()}</span>
                     </span>
                     <span className="flex items-center space-x-1">
                       <Clock size={14} />
-                      <span>{calculateReadTime(featuredPost.content)}</span>
+                      <span>{calculateReadTime(featuredPost[0].content)}</span>
                     </span>
                   </div>
-                  <h2 className="text-2xl font-bold mb-2 font-serif">{featuredPost.title}</h2>
-                  <p className="text-gray-200">{featuredPost.metaDescription}</p>
+                  <h2 className="text-2xl font-bold mb-2 font-serif">{featuredPost[0].title}</h2>
+                  <p className="text-gray-200">{featuredPost[0].metaDescription}</p>
                 </div>
               </div>
               <div className="p-6">
@@ -108,7 +108,7 @@ const BlogPage = async () => {
                     <span className="text-gray-600 text-sm">Dr. R M Singh</span>
                   </div>
                   <Link 
-                    href={`/${featuredPost.slug}`}
+                    href={`/${featuredPost[0].slug}`}
                     className="btn-primary flex items-center space-x-2"
                   >
                     <span>Read More</span>
